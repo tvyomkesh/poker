@@ -36,6 +36,8 @@ class Player:
         self.folded = False
         self.is_all_in = False
         self.is_dealer = False
+        self.is_sb = False  # Small blind position
+        self.is_bb = False  # Big blind position
         self.last_action: Optional[str] = None  # Track last action for display
 
     def reset_hand(self):
@@ -44,6 +46,8 @@ class Player:
         self.current_bet = 0
         self.folded = False
         self.is_all_in = False
+        self.is_sb = False
+        self.is_bb = False
         self.last_action = None
 
     def reset_chips(self):

@@ -224,8 +224,16 @@ class GameDisplay:
             color = Colors.pair(Colors.PLAYER_WAITING)
             status = ""
 
-        dealer_mark = " [D]" if player.is_dealer else ""
-        info = f"{player.name}{dealer_mark}{status}"
+        # Build position markers: D=Dealer, SB=Small Blind, BB=Big Blind
+        position_marks = []
+        if player.is_dealer:
+            position_marks.append("D")
+        if player.is_sb:
+            position_marks.append("SB")
+        if player.is_bb:
+            position_marks.append("BB")
+        position_str = " [" + "/".join(position_marks) + "]" if position_marks else ""
+        info = f"{player.name}{position_str}{status}"
 
         # Position based on alignment
         if alignment == 'center':

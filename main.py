@@ -283,9 +283,12 @@ class PokerApp:
         action, amount = current_bot.get_action(game_state)
         self.game.process_action(action, amount)
 
-    def play_hand(self):
+    def play_hand(self, is_first_hand: bool = False):
         """Play a complete hand."""
-        self.game.start_hand()
+        if is_first_hand:
+            self.game.start_hand()
+        else:
+            self.game.next_hand()  # Rotates dealer and starts hand
 
         while self.game.phase not in (GamePhase.SHOWDOWN, GamePhase.GAME_OVER):
             if not self.running:
@@ -303,24 +306,24 @@ class PokerApp:
         # Show final state
         self.display.render(self.game)
 
-    def handle_showdown(self):
-        """Handle post-showdown input."""
+    def handle_showdown(self) -> bool:
+        """Handle post-showdown input. Returns True if game was restarted."""
         while True:
             key = self.stdscr.getch()
 
             if key == ord('q') or key == ord('Q'):
                 self.running = False
-                return
+                return False
 
             if key == ord('n') or key == ord('N'):
                 if self.game.phase != GamePhase.GAME_OVER:
                     self.display.clear_log()
-                    return
+                    return False
 
             if key == ord('r') or key == ord('R'):
                 self.game.reset_game()
                 self.display.clear_log()
-                return
+                return True  # Signal that game was restarted
 
     def run(self):
         """Main game loop."""
@@ -339,15 +342,19 @@ class PokerApp:
         # Initialize game with selected settings
         self.initialize_game()
 
+        is_first_hand = True
         while self.running:
-            self.play_hand()
+            self.play_hand(is_first_hand)
+            is_first_hand = False
 
             if not self.running:
                 break
 
             # Show result and wait for next action
             self.display.render(self.game)
-            self.handle_showdown()
+            was_restarted = self.handle_showdown()
+            if was_restarted:
+                is_first_hand = True  # Reset so start_hand() is used instead of next_hand()
 
 
 def _curses_main(stdscr):

@@ -93,15 +93,7 @@ class PokerGame:
         for player in self.players:
             player.reset_hand()
 
-        # Set dealer button
-        for i, player in enumerate(self.players):
-            player.is_dealer = (i == self.dealer_idx)
-
-        # Deal hole cards
-        for player in self.players:
-            player.receive_cards(self.deck.deal(2))
-
-        # Post blinds
+        # Set dealer button and blind positions
         if self.num_players == 2:
             # Heads-up special rule: dealer posts SB
             sb_idx = self.dealer_idx
@@ -111,6 +103,16 @@ class PokerGame:
             sb_idx = (self.dealer_idx + 1) % self.num_players
             bb_idx = (self.dealer_idx + 2) % self.num_players
 
+        for i, player in enumerate(self.players):
+            player.is_dealer = (i == self.dealer_idx)
+            player.is_sb = (i == sb_idx)
+            player.is_bb = (i == bb_idx)
+
+        # Deal hole cards
+        for player in self.players:
+            player.receive_cards(self.deck.deal(2))
+
+        # Post blinds
         sb_player = self.players[sb_idx]
         bb_player = self.players[bb_idx]
 
@@ -273,6 +275,9 @@ class PokerGame:
         # Reset betting for new round
         for player in self.players:
             player.current_bet = 0
+            # Clear actions from previous betting round, but keep "Folded" visible
+            if not player.folded:
+                player.last_action = None
         self.current_bet = 0
         self.last_raiser_idx = -1
         self.actions_this_round = 0
