@@ -2,30 +2,7 @@
 
 A terminal-based Texas Hold'em Poker game with AI opponents.
 
-```
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                     TEXAS HOLD'EM - Hand #42              [Hard]             ║
-║  ♣                                                                      ♠    ║
-║                                  Bot 2 [D]                                   ║
-║                                  ($1,250)                                    ║
-║                                 [??] [??]                                    ║
-║                                                                              ║
-║      Bot 1                                                    Bot 3          ║
-║      ($890)                                                   ($1,100)       ║
-║     [??] [??]                                                [??] [??]       ║
-║                                                                              ║
-║                              [ RIVER ]                                       ║
-║                        [A♠] [K♦] [7♣] [2♥] [9♠]                              ║
-║                              ⭐ POT: $450 ⭐                                  ║
-║                                                                              ║
-║                                   You                                        ║
-║                          ($760) (Raised $120)                                ║
-║                              [A♥] [A♦]                                       ║
-║                                                                              ║
-║              [C] Check    [R] Raise    [F] Fold    [Q] Quit                  ║
-║  ♥                                                                      ♦    ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-```
+![Poker Demo](screenshots/demo.gif)
 
 ## Features
 
@@ -93,16 +70,6 @@ python main.py
 - **Terminal Size**: 140 x 40 minimum
 - **Python**: 3.8 or higher
 - **Platform**: macOS, Linux, Windows (with windows-curses)
-
-## Screenshots
-
-<!-- Add your screenshots here -->
-<!--
-![Gameplay](screenshots/gameplay.png)
-![Showdown](screenshots/showdown.png)
--->
-
-*Screenshots coming soon - run the game to see it in action!*
 
 ## How to Play
 
