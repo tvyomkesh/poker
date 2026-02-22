@@ -1,0 +1,7 @@
+# Texas Hold'em Poker - Dependencies
+#
+# This project uses only Python standard library modules.
+# No external packages required on macOS/Linux.
+#
+# On Windows, install windows-curses for terminal UI support:
+windows-curses; sys_platform == 'win32'

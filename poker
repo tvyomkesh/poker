@@ -1,0 +1,4 @@
+#!/bin/bash
+
+PY=$(which python3)
+$PY ./main.py

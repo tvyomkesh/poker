@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fairpoker"
+version = "1.0.0"
+description = "Terminal-based Texas Hold'em Poker game with AI opponents"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Vyomkesh Tripathi"}
+]
+keywords = ["poker", "texas-holdem", "card-game", "terminal", "cli", "game"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Environment :: Console :: Curses",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Games/Entertainment",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "windows-curses; sys_platform == 'win32'",
+]
+
+[project.urls]
+Homepage = "https://github.com/tvyomkesh/poker"
+Repository = "https://github.com/tvyomkesh/poker"
+
+[project.scripts]
+fairpoker = "main:main"
+poker = "main:main"
+
+[tool.setuptools]
+py-modules = ["main"]
+packages = ["game", "game.bot", "ui", "utils"]
+
+[tool.setuptools.package-data]
+"*" = ["*.txt"]
