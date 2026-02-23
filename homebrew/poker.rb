@@ -1,8 +1,8 @@
 class Poker < Formula
   desc "Terminal-based Texas Hold'em Poker game with AI opponents"
   homepage "https://github.com/tvyomkesh/poker"
-  url "https://github.com/tvyomkesh/poker/archive/refs/tags/v1.1.0.tar.gz"
-  sha256 "e438dcceb0c9f08781961c35eb557f1ce3d75dedb1d759a79f2d3e28ad0f2c9e"
+  url "https://github.com/tvyomkesh/poker/archive/refs/tags/v1.2.0.tar.gz"
+  sha256 "2b245c6013283f49afd1883c6f05a49147e6ab5b83780984c1f423bbda76ff9e"
   license "MIT"
 
   depends_on "python@3.12" => :recommended
