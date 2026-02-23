@@ -28,7 +28,7 @@ brew tap tvyomkesh/poker
 brew install poker
 ```
 
-### pip (All platforms) Coming soon...
+### pip (All platforms)
 
 ```bash
 pip install fairpoker
